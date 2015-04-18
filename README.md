@@ -7,10 +7,10 @@ A text-based RPG where all your movements are tracked in a linked list, so that 
 ***How to Run***
 check back after phase 2
 
-***Dependencies**
+***Dependencies***
 check back after phase 2
 
-***System Requirements**
+***System Requirements***
 If you can type in a command line, you can run this game.
 
 ***Group Members***
