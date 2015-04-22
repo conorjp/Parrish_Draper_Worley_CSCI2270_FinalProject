@@ -29,6 +29,7 @@ int main(int argc, char* argv[]){
     }
     in.close();
     
+    cout << "Welcome to Bikini Bottom" << endl;
     //GAMEPLAY
     
     return 0;
