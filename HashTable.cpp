@@ -1,9 +1,9 @@
 //
 //  HashTable.cpp
-//  
 //
-//  Created by Conor Parrish on 4/13/15.
-//
+//  Final Project
+//  CSCI-2270
+//  Conor Parrish, James Draper, Luke Worley
 //
 
 #include <iostream>
@@ -50,7 +50,7 @@ void HashTable::insertLocation(std::string in_title, int lives){
         table[index] = temp;
     }
 }
-Movie* HashTable::findLocation(std::string in_title){
+Location* HashTable::findLocation(std::string in_title){
     int index = hashSum(in_title);
     if(table[index] != NULL){
         Location *temp = table[index];
@@ -76,21 +76,21 @@ void HashTable::deleteLocation(std::string in_title){
     else{
         int index = hashSum(in_title);
         Location *temp = table[index];
-        if(temp->title == in_title){ //Movie to be deleted is head of list
+        if(temp->title == in_title){ //Location to be deleted is head of list
             //cout << "head of list" << endl;
-            if(temp->next == NULL){ //Is only movie in list
+            if(temp->next == NULL){ //Is only location in list
                 table[index] = NULL;
                 delete temp;
             }
-            else{ //Is not only movie
+            else{ //Is not only location
                 table[index] = temp->next;
                 delete temp;
             }
         }
-        else{ //Movie to be deleted is not head of list
+        else{ //Location to be deleted is not head of list
             //cout << "not head of list" << endl;
             while(temp->next != NULL){
-                if(temp->next->title == in_title){ //If next node is Movie to be deleted
+                if(temp->next->title == in_title){ //If next node is location to be deleted
                     Location *temp2 = temp->next;
                     temp->next = temp->next->next;
                     delete temp2;

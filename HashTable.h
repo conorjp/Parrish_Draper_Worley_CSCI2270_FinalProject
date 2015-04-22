@@ -1,9 +1,9 @@
 //
 //  HashTable.h
 //  
-//
-//  Created by Conor Parrish on 4/13/15.
-//
+//  Final Project
+//  CSCI-2270
+//  Conor Parrish, James Draper, Luke Worley
 //
 
 #ifndef _HashTable_h
@@ -29,14 +29,14 @@ class HashTable{
     HashTable();
     ~HashTable();
     void insertLocation(std::string in_title, int year);
-    Movie* findLocation(std::string in_title);
+    Location* findLocation(std::string in_title);
     void deleteLocation(std::string in_title);
     void printMap();
     int hashSum(std::string x);
   protected:
   private:
     std::vector<Location*> table;
-    int tableSize = 10;
+    int tableSize = 5;
 };
 
 #endif
