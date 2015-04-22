@@ -1,23 +1,23 @@
 # Parrish_Draper_Worley_CSCI2270_FinalProject
 Conor Parrish, James Draper, Luke Worley -- Final Project ReadMe
 
-***Project Summary***
-A text-based RPG where all your movements are tracked in a linked list, so that if you die, you can go back and fix it, as well as see how far through the environment you made it. The class will be a character class, allowing you to customize yourself. The public methods will control certain aspects of the game, including your character's health, position, growth, etc.
+***Project Summary:***
+A text-based RPG in the world of Spongebob. The class will be a location class, holding different locations in a hash table. Your character will navigate through these locations, completing challenges at each one.
 
-***How to Run***
+***How to Run:***
 check back after phase 2
 
-***Dependencies***
+***Dependencies:***
 check back after phase 2
 
-***System Requirements***
+***System Requirements:***
 If you can type in a command line, you can run this game.
 
-***Group Members***
+***Group Members:***
 Conor Parrish, James Draper, Luke Worley
 
-***Contributors***
+***Contributors:***
 check back after people contribute
 
-***Open issues/bugs***
+***Open issues/bugs:***
 check back after phase 2
