@@ -9,17 +9,17 @@
 #ifndef _HashTable_h
 #define _HashTable_h
 
-struct Movie{
+struct Location{
     std::string title;
-    int year;
-    Movie *next;
+    int lives;
+    Location *next;
     
-    Movie(){};
+    Location(){};
     
-    Movie(std::string in_title, int in_year)
+    Location(std::string in_title, int in_lives)
     {
         title = in_title;
-        year = in_year;
+        lives = in_lives;
     }
     
 };
@@ -28,14 +28,14 @@ class HashTable{
   public:
     HashTable();
     ~HashTable();
-    void insertMovie(std::string in_title, int year);
-    Movie* findMovie(std::string in_title);
-    void deleteMovie(std::string in_title);
-    void printInventory();
+    void insertLocation(std::string in_title, int year);
+    Movie* findLocation(std::string in_title);
+    void deleteLocation(std::string in_title);
+    void printMap();
     int hashSum(std::string x);
   protected:
   private:
-    std::vector<Movie*> table;
+    std::vector<Location*> table;
     int tableSize = 10;
 };
 

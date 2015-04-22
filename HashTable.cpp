@@ -13,7 +13,7 @@
 using namespace std;
 
 HashTable::HashTable(){
-    table = vector<Movie*> (tableSize);
+    table = vector<Location*> (tableSize);
     for(int i=0; i<tableSize; i++){
         table[i] = NULL;
     }
@@ -21,17 +21,17 @@ HashTable::HashTable(){
 HashTable::~HashTable(){
     
 }
-void HashTable::insertMovie(std::string in_title, int year){
+void HashTable::insertLocation(std::string in_title, int lives){
     int index = hashSum(in_title);
-    Movie *temp = new Movie(in_title, year);
+    Location *temp = new Location(in_title, lives);
     if(table[index] != NULL){
         temp->next = table[index];
         if(temp->title < table[index]->title){
             table[index] = temp;
         }
         else{
-            Movie *track = NULL;
-            Movie *track2 = NULL;
+            Location *track = NULL;
+            Location *track2 = NULL;
             while(temp->next != NULL && temp->next->title < temp->title){
                 track2 = temp->next;
                 temp->next = temp->next->next;
@@ -50,10 +50,10 @@ void HashTable::insertMovie(std::string in_title, int year){
         table[index] = temp;
     }
 }
-Movie* HashTable::findMovie(std::string in_title){
+Movie* HashTable::findLocation(std::string in_title){
     int index = hashSum(in_title);
     if(table[index] != NULL){
-        Movie *temp = table[index];
+        Location *temp = table[index];
         while(temp != NULL){
             if(temp->title == in_title){
                 return temp;
@@ -68,14 +68,14 @@ Movie* HashTable::findMovie(std::string in_title){
         return NULL;
     }
 }
-void HashTable::deleteMovie(std::string in_title){
-    Movie* mov = findMovie(in_title);
-    if(mov == NULL){ //Movie does not exist
+void HashTable::deleteLocation(std::string in_title){
+    Location* loc = findLocation(in_title);
+    if(loc == NULL){ //Location does not exist
         cout << "not found" << endl;
     }
     else{
         int index = hashSum(in_title);
-        Movie *temp = table[index];
+        Location *temp = table[index];
         if(temp->title == in_title){ //Movie to be deleted is head of list
             //cout << "head of list" << endl;
             if(temp->next == NULL){ //Is only movie in list
@@ -91,7 +91,7 @@ void HashTable::deleteMovie(std::string in_title){
             //cout << "not head of list" << endl;
             while(temp->next != NULL){
                 if(temp->next->title == in_title){ //If next node is Movie to be deleted
-                    Movie *temp2 = temp->next;
+                    Location *temp2 = temp->next;
                     temp->next = temp->next->next;
                     delete temp2;
                 }
@@ -102,14 +102,14 @@ void HashTable::deleteMovie(std::string in_title){
         }
     }
 }
-void HashTable::printInventory(){
+void HashTable::printMap(){
     bool isEmpty = true;
     for(int i=0; i<table.size(); i++){
         if(table[i] != NULL){
             isEmpty = false;
-            Movie *x = table[i];
+            Location *x = table[i];
             while(x != NULL){
-                cout << x->title << ":" << x->year << endl;
+                cout << x->title << ":" << x->lives << endl;
                 x = x->next;
             }
         }
