@@ -33,6 +33,7 @@ class HashTable{
     void deleteLocation(std::string in_title);
     void printMap();
     int hashSum(std::string x);
+    void setHealth(std::string name, int in_lives);
   protected:
   private:
     std::vector<Location*> table;

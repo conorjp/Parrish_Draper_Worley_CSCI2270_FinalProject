@@ -21,15 +21,32 @@ int main(int argc, char* argv[]){
     ifstream in;
     in.open(fileName);
     string title;
+    
+    string playerName, difficulty;
+    cout << "Welcome to Bikini Bottom. Please enter your first name" << endl;
+    cin >> playerName;
+    cout << "Hello " << playerName << ", easy or hard?" << endl;
+    cin >> difficulty;
+    int diff = 4;
+    if(difficulty == easy){
+        diff = 4;
+        cout << "Starting easy game" << endl;
+    }
+    else if(difficulty == hard){
+        diff = 2;
+        cout << "Starting hard game" << endl;
+    }
+    else{
+        cout << "Command not recognized, starting easy game" << endl;
+    }
+    
     if(in.is_open()){
         while(!in.eof()){
             getline(in, title);
-            map->insertLocation(title, 10);
+            map->insertLocation(title, diff);
         }
     }
     in.close();
-    
-    cout << "Welcome to Bikini Bottom" << endl;
     //GAMEPLAY
     
     return 0;

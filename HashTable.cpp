@@ -126,3 +126,9 @@ int HashTable::hashSum(string x){ //x is the string to hash, s is the array size
     sum = sum % tableSize;
     return sum;
 }
+void HashTable::setHealth(std::string name, int in_lives){
+    Location *toSet = findLocation(name);
+    toSet->lives = in_lives;
+}
+
+
