@@ -19,7 +19,7 @@ HashTable::HashTable(){
     }
 }
 HashTable::~HashTable(){
-    
+
 }
 void HashTable::insertLocation(std::string in_title, int lives){
     int index = hashSum(in_title);
@@ -129,6 +129,11 @@ int HashTable::hashSum(string x){ //x is the string to hash, s is the array size
 void HashTable::setHealth(std::string name, int in_lives){
     Location *toSet = findLocation(name);
     toSet->lives = in_lives;
+}
+void tryingrepository(string rep)
+{
+    cout<<rep<<endl;
+
 }
 
 
