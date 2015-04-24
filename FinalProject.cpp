@@ -28,11 +28,11 @@ int main(int argc, char* argv[]){
     cout << "Hello " << playerName << ", easy or hard?" << endl;
     cin >> difficulty;
     int diff = 4;
-    if(difficulty == easy){
+    if(difficulty == "easy"){
         diff = 4;
         cout << "Starting easy game" << endl;
     }
-    else if(difficulty == hard){
+    else if(difficulty == "hard"){
         diff = 2;
         cout << "Starting hard game" << endl;
     }
