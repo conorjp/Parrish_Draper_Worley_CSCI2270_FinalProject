@@ -21,6 +21,7 @@ HashTable::HashTable(){
 HashTable::~HashTable(){
 
 }
+
 void HashTable::insertLocation(std::string in_title, int lives){
     int index = hashSum(in_title);
     Location *temp = new Location(in_title, lives);
@@ -50,6 +51,15 @@ void HashTable::insertLocation(std::string in_title, int lives){
         table[index] = temp;
     }
 }
+//prototype:
+//  table.findLocation("location")
+//Description:
+//  This function takes in the location at which the player would like to be. It goes through our
+//  hashtable to find the location and give the player the options associated with that location.
+//Pre-Conditions:
+//  requires a string as an input
+//  you must have built an instance of our hash table and filled it with locations before deleting a location
+
 Location* HashTable::findLocation(std::string in_title){
     int index = hashSum(in_title);
     if(table[index] != NULL){
@@ -68,6 +78,14 @@ Location* HashTable::findLocation(std::string in_title){
         return NULL;
     }
 }
+//prototype:
+//  map.deleteLocation("string")
+// Description:
+//  This function deletes a "location" from our hash table. Each of our locations are
+//  to determine at what point in our rpg game the player is in.
+//Pre-Conditions
+//  requires a string as an input
+//  you must have built an instance of our hash table and filled it with locations before deleting a location
 void HashTable::deleteLocation(std::string in_title){
     Location* loc = findLocation(in_title);
     if(loc == NULL){ //Location does not exist
@@ -130,11 +148,7 @@ void HashTable::setHealth(std::string name, int in_lives){
     Location *toSet = findLocation(name);
     toSet->lives = in_lives;
 }
-void tryingrepository(string rep)
-{
-    cout<<rep<<endl;
 
-}
 
 //making changes
 
