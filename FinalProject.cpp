@@ -16,12 +16,8 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-    HashTable *map = new HashTable();
-    string fileName = argv[1];
-    ifstream in;
-    in.open(fileName);
-    string title;
     
+    //Initial menu
     string playerName, difficulty;
     cout << "Welcome to Bikini Bottom. Please enter your first name" << endl;
     cin >> playerName;
@@ -29,7 +25,6 @@ int main(int argc, char* argv[]){
     cin >> difficulty;
     int diff = 4;
     if(difficulty == "easy"){
-        diff = 4;
         cout << "Starting easy game" << endl;
     }
     else if(difficulty == "hard"){
@@ -40,6 +35,12 @@ int main(int argc, char* argv[]){
         cout << "Command not recognized, starting easy game" << endl;
     }
     
+    //Read in locations file and build hash table
+    HashTable *map = new HashTable();
+    string fileName = argv[1];
+    ifstream in;
+    in.open(fileName);
+    string title;
     if(in.is_open()){
         while(!in.eof()){
             getline(in, title);
