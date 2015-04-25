@@ -37,7 +37,9 @@ class HashTable{
     void printPreviousLocations(Location *head);
     void printNotVisitedLocations(Location *head);
     int hashSum(std::string x);
-    void setHealth(std::string name, int in_lives);
+    void setHealth(std::string name);
+    void addToOrder (std:: string location);
+    Location *head;
   protected:
   private:
     std::vector<Location*> table;

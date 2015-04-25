@@ -145,9 +145,13 @@ int HashTable::hashSum(string x){ //x is the string to hash, s is the array size
     sum = sum % tableSize;
     return sum;
 }
-void HashTable::setHealth(std::string name, int in_lives){
+// always decrements lives so that the players current life doesnt need to be known (makes it a little easier) if we want to be able to
+// give the player health back we can pass an integer when that integer is greater than zero you add to health and if its less than zero you
+// decrement the health
+void HashTable::setHealth(std::string name)
+{
     Location *toSet = findLocation(name);
-    toSet->lives = in_lives;
+    toSet->lives = toSet->lives--;
 }
 //The player must have left the first level for there to be anything to print.
 //Everytime the player visits a new location we must assign that new location to the end of our visited linked list.
@@ -161,6 +165,19 @@ void HashTable::printPreviousLocations(Location *head)
 
 }
 
+//adds the current location to the end of the linked list
+void HashTable::addToOrder (string location)
+{
+    Location* start = head;
+    Location* tail = findLocation(location);
+    while (start -> orderVisited != NULL) //head is a public member of our  class
+    {
+        start=start->orderVisited; //(iterate through the order we've visited)
+
+    }
+    start->orderVisited = tail;
+    tail->orderVisited = NULL;
+}
 void HashTable::printNotVisitedLocations(Location *head)
 {
     bool isEmpty = true;
@@ -169,10 +186,15 @@ void HashTable::printNotVisitedLocations(Location *head)
             isEmpty = false;
             Location *x = table[i];
             while(x != NULL){
-                cout << x->title << ":" << x->lives << endl;
+                if(x->visited==false)
+                {
+                    cout << x->title << "->";
+                }
+
                 x = x->next;
             }
         }
+        cout<<endl;
     }
 
 }

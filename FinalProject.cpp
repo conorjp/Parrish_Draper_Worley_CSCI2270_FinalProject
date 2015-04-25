@@ -18,7 +18,7 @@ using namespace std;
 int main(int argc, char* argv[]){
 
     //Initial menu
-    string playerName, difficulty;
+    string playerName, difficulty, nextlocation,location;
     cout << "Welcome to Bikini Bottom. Please enter your first name" << endl;
     cin >> playerName;
     cout << "Hello " << playerName << ", easy or hard?" << endl;
@@ -52,7 +52,28 @@ int main(int argc, char* argv[]){
     }
     in.close();
     //GAMEPLAY
-    cout<<"You are in a pineapple under the sea. Who are you."<<endl;
+    cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
+    string name;
+    cin >> name;
+
+    if (name == "spongebob")
+    {
+         cin.ignore(1,'\n');
+        cout<<"congratulations you now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at sandy’s treedome'. Which would you like to do?"<<endl;
+
+
+
+
+
+        cout<<"Enter  title:"<<endl;
+        getline(cin,location);
+       Map->findLocation(location)->orderVisited ;
+        cout<<nextlocation<<endl;
+    }
+    else
+    {
+        Map->setHealth(location);
+    }
 
 
     return 0;
