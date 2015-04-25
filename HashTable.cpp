@@ -120,7 +120,8 @@ void HashTable::deleteLocation(std::string in_title){
         }
     }
 }
-void HashTable::printMap(){
+void HashTable::printMap()
+{
     bool isEmpty = true;
     for(int i=0; i<table.size(); i++){
         if(table[i] != NULL){
@@ -148,6 +149,34 @@ void HashTable::setHealth(std::string name, int in_lives){
     Location *toSet = findLocation(name);
     toSet->lives = in_lives;
 }
+//The player must have left the first level for there to be anything to print.
+//Everytime the player visits a new location we must assign that new location to the end of our visited linked list.
+void HashTable::printPreviousLocations(Location *head)
+{
+    Location *start = head;
+    while (start->orderVisited!=NULL)
+    {
+        cout<<start->title<< "->"<<endl;
+    }
+
+}
+
+void HashTable::printNotVisitedLocations(Location *head)
+{
+    bool isEmpty = true;
+    for(int i=0; i<table.size(); i++){
+        if(table[i] != NULL){
+            isEmpty = false;
+            Location *x = table[i];
+            while(x != NULL){
+                cout << x->title << ":" << x->lives << endl;
+                x = x->next;
+            }
+        }
+    }
+
+}
+
 
 
 //making changes
