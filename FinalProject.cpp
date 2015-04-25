@@ -16,7 +16,7 @@
 using namespace std;
 
 int main(int argc, char* argv[]){
-    
+
     //Initial menu
     string playerName, difficulty;
     cout << "Welcome to Bikini Bottom. Please enter your first name" << endl;
@@ -34,21 +34,26 @@ int main(int argc, char* argv[]){
     else{
         cout << "Command not recognized, starting easy game" << endl;
     }
-    
+
     //Read in locations file and build hash table
-    HashTable *map = new HashTable();
-    string fileName = argv[1];
+    cout<<"here"<<endl;
+    HashTable *Map = new HashTable();
+    cout<<"here"<<endl;
+    string fileName = "locations.txt";
     ifstream in;
     in.open(fileName);
     string title;
-    if(in.is_open()){
+    if(in.is_open())
+        {
         while(!in.eof()){
             getline(in, title);
-            map->insertLocation(title, diff);
+            Map->insertLocation(title, diff);
         }
     }
     in.close();
     //GAMEPLAY
-    
+    cout<<"You are in a pineapple under the sea. Who are you."<<endl;
+
+
     return 0;
 }
