@@ -23,33 +23,43 @@ HashTable::~HashTable(){
 }
 
 void HashTable::insertLocation(std::string in_title, int lives){
-    int index = hashSum(in_title);
-    Location *temp = new Location(in_title, lives);
-    if(table[index] != NULL){
-        temp->next = table[index];
-        if(temp->title < table[index]->title){
-            table[index] = temp;
-        }
-        else{
-            Location *track = NULL;
-            Location *track2 = NULL;
-            while(temp->next != NULL && temp->next->title < temp->title){
-                track2 = temp->next;
-                temp->next = temp->next->next;
-                track2->next = temp;
-                if(track == NULL){
-                    track = table[index];
+    int index = hashSum (in_title);
+    Location *newLocation = new Location(in_title, lives);
+    Location *possible = table[index];
+
+    if (possible == NULL)
+    {
+        cout<< index << " "<< in_title<<" no collision"<<endl;
+        table[index] = newLocation;
+        newLocation->next == NULL;
+    }
+    else
+    {
+        //cout<<" collision";
+        if (in_title.compare(possible->title)>0) // if in title is after possible  alphabetically
+        {
+
+        //cout<<index<<" "<<in_title<<" collision"<<endl;
+            while(possible->next!=NULL)
+            {
+                if(in_title.compare(possible->next->title)<0) // if its supposed to go in the middle
+                {
+                    break;
                 }
-                else{
-                    track->next = track2;
-                    track = track->next;
-                }
+                possible = possible -> next;
             }
+            //cout<< newLocation -> title <<endl;
+            newLocation->next = possible->next;
+            possible->next = newLocation;
+        }
+        else
+        {
+            //cout<<"head collision"<<endl;
+            newLocation->next = possible;
+            table[index] = newLocation;
         }
     }
-    else{
-        table[index] = temp;
-    }
+
 }
 //prototype:
 //  table.findLocation("location")
@@ -122,6 +132,7 @@ void HashTable::deleteLocation(std::string in_title){
 }
 void HashTable::printMap()
 {
+
     bool isEmpty = true;
     for(int i=0; i<table.size(); i++){
         if(table[i] != NULL){

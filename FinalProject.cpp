@@ -18,7 +18,8 @@ using namespace std;
 int main(int argc, char* argv[]){
 
     //Initial menu
-    string playerName, difficulty, nextlocation,location;
+    string playerName, difficulty, nextlocation;
+    string location = "pineapple";
     cout << "Welcome to Bikini Bottom. Please enter your first name" << endl;
     cin >> playerName;
     cout << "Hello " << playerName << ", easy or hard?" << endl;
@@ -36,9 +37,8 @@ int main(int argc, char* argv[]){
     }
 
     //Read in locations file and build hash table
-    cout<<"here"<<endl;
+
     HashTable *Map = new HashTable();
-    cout<<"here"<<endl;
     string fileName = "locations.txt";
     ifstream in;
     in.open(fileName);
@@ -47,32 +47,32 @@ int main(int argc, char* argv[]){
         {
         while(!in.eof()){
             getline(in, title);
+            cout<<title<<endl;
             Map->insertLocation(title, diff);
         }
     }
     in.close();
     //GAMEPLAY
-    cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
-    string name;
-    cin >> name;
-
-    if (name == "spongebob")
+    while(location == "pineapple")
     {
-         cin.ignore(1,'\n');
-        cout<<"congratulations you now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at sandy’s treedome'. Which would you like to do?"<<endl;
 
+        Map->printMap();
+        cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
+        string name;
+        cin >> name;
 
-
-
-
-        cout<<"Enter  title:"<<endl;
-        getline(cin,location);
-       Map->findLocation(location)->orderVisited ;
-        cout<<nextlocation<<endl;
-    }
-    else
-    {
-        Map->setHealth(location);
+        if (name == "spongebob")
+        {
+             cin.ignore(1,'\n');
+            cout<<"congratulations you now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at sandy’s treedome'. Which would you like to do?"<<endl;
+            getline(cin,location);
+            cout<<location<<endl;
+            Map->addToOrder(location);
+        }
+        else
+        {
+            Map->setHealth(location);
+        }
     }
 
 
