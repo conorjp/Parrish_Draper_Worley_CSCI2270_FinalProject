@@ -23,7 +23,7 @@ HashTable::~HashTable(){
 }
 
 void HashTable::insertLocation(std::string in_title, int lives){
-    int index = hashSum (in_title);
+    /*int index = hashSum(in_title);
     Location *newLocation = new Location(in_title, lives);
     Location *possible = table[index];
 
@@ -58,6 +58,33 @@ void HashTable::insertLocation(std::string in_title, int lives){
             newLocation->next = possible;
             table[index] = newLocation;
         }
+    }*/
+    int index = hashSum(in_title);
+    Location *temp = new Location(in_title, lives);
+    if(table[index] != NULL){
+        temp->next = table[index];
+        if(temp->title < table[index]->title){
+            table[index] = temp;
+        }
+        else{
+            Location *track = NULL;
+            Location *track2 = NULL;
+            while(temp->next != NULL && temp->next->title < temp->title){
+                track2 = temp->next;
+                temp->next = temp->next->next;
+                track2->next = temp;
+                if(track == NULL){
+                    track = table[index];
+                }
+                else{
+                    track->next = track2;
+                    track = track->next;
+                }
+            }
+        }
+    }
+    else{
+        table[index] = temp;
     }
 
 }
@@ -221,6 +248,28 @@ bool HashTable::allVisited(){
     return visited;
 }
 
+//LOCATION FUNCTIONS
+Location* HashTable::pineapple(){
+    Location *currentLoc = findLocation("inside the pineapple");
+    cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
+    string name;
+    cin >> name;
+    
+    if (name == "spongebob")
+    {
+        string location;
+        cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at sandy’s treedome'. Which would you like to do?"<<endl;
+        getline(cin,location);
+        cout<<location<<endl;
+        if(location == "under a rock" || location == "at sandy's treedome"){
+            currentLoc = findLocation(location);
+        }
+        else{
+            cout << "You can't go there. You lose a life." << endl;
+        }
+    }
+    return currentLoc;
+}
 
 //making changes
 

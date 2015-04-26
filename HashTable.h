@@ -40,6 +40,7 @@ class HashTable{
     void setHealth(std::string name);
     void addToOrder (std:: string location);
     bool allVisited();
+    Location* pineapple();
   protected:
   private:
     std::vector<Location*> table;
