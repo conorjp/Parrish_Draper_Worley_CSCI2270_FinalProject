@@ -31,7 +31,7 @@ void HashTable::insertLocation(std::string in_title, int lives){
     {
         cout<< index << " "<< in_title<<" no collision"<<endl;
         table[index] = newLocation;
-        newLocation->next == NULL;
+        newLocation->next = NULL;
     }
     else
     {
