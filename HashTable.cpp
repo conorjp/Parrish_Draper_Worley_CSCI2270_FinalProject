@@ -23,7 +23,7 @@ HashTable::~HashTable(){
 }
 
 void HashTable::insertLocation(std::string in_title, int lives){
-    /*int index = hashSum(in_title);
+    int index = hashSum(in_title);
     Location *newLocation = new Location(in_title, lives);
     Location *possible = table[index];
 
@@ -58,35 +58,7 @@ void HashTable::insertLocation(std::string in_title, int lives){
             newLocation->next = possible;
             table[index] = newLocation;
         }
-    }*/
-    int index = hashSum(in_title);
-    Location *temp = new Location(in_title, lives);
-    if(table[index] != NULL){
-        temp->next = table[index];
-        if(temp->title < table[index]->title){
-            table[index] = temp;
-        }
-        else{
-            Location *track = NULL;
-            Location *track2 = NULL;
-            while(temp->next != NULL && temp->next->title < temp->title){
-                track2 = temp->next;
-                temp->next = temp->next->next;
-                track2->next = temp;
-                if(track == NULL){
-                    track = table[index];
-                }
-                else{
-                    track->next = track2;
-                    track = track->next;
-                }
-            }
-        }
     }
-    else{
-        table[index] = temp;
-    }
-
 }
 //prototype:
 //  table.findLocation("location")
@@ -159,7 +131,6 @@ void HashTable::deleteLocation(std::string in_title){
 }
 void HashTable::printMap()
 {
-
     bool isEmpty = true;
     for(int i=0; i<table.size(); i++){
         if(table[i] != NULL){
@@ -234,7 +205,6 @@ void HashTable::printNotVisitedLocations(Location *head)
         }
         cout<<endl;
     }
-
 }
 
 //Checks if every location has been visited. If all have been visited and lives != 0, player wins
