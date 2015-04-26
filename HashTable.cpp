@@ -209,6 +209,8 @@ void HashTable::printNotVisitedLocations(Location *head)
     }
 
 }
+
+//Checks if every location has been visited. If all have been visited and lives != 0, player wins
 bool HashTable::allVisited(){
     bool visited = true;
     for(int i=0; i<table.size(); i++){
