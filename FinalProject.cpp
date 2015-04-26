@@ -40,6 +40,7 @@ int main(){
 
     HashTable *Map = new HashTable();
     string fileName = "locations.txt";
+    Location *current = Map->findLocation("pineapple");
     ifstream in;
     in.open(fileName);
     string title;
@@ -54,8 +55,7 @@ int main(){
     in.close();
     
     //GAMEPLAY
-    while(location == "pineapple")
-    {
+    while(current->lives > 0 && Map->allVisited() == false){
 
         Map->printMap();
         cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;

@@ -39,6 +39,7 @@ class HashTable{
     int hashSum(std::string x);
     void setHealth(std::string name);
     void addToOrder (std:: string location);
+    bool allVisited();
     Location *head;
   protected:
   private:
