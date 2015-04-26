@@ -15,7 +15,7 @@
 
 using namespace std;
 
-int main(int argc, char* argv[]){
+int main(){
 
     //Initial menu
     string playerName, difficulty, nextlocation;
@@ -52,6 +52,7 @@ int main(int argc, char* argv[]){
         }
     }
     in.close();
+    
     //GAMEPLAY
     while(location == "pineapple")
     {

@@ -162,7 +162,7 @@ int HashTable::hashSum(string x){ //x is the string to hash, s is the array size
 void HashTable::setHealth(std::string name)
 {
     Location *toSet = findLocation(name);
-    toSet->lives = toSet->lives--;
+    toSet->lives--;
 }
 //The player must have left the first level for there to be anything to print.
 //Everytime the player visits a new location we must assign that new location to the end of our visited linked list.
