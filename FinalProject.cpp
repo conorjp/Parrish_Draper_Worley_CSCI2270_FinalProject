@@ -50,15 +50,34 @@ int main(){
     }
     in.close();
     
+    Map->printMap();
+    
     //GAMEPLAY
-    Location *current = Map->findLocation("pineapple");
+    Location *current = Map->findLocation("inside the pineapple");
     while(current->lives > 0 && Map->allVisited() == false){
         Map->addToOrder(current->title);
+        cout << "test" << endl;
         if(current->title == "inside the pineapple"){
             current = Map->pineapple();
         }
         else if(current->title == "under a rock"){
-            
+            current = Map->rock();
+        }
+        else if(current->title == "at the chum bucket"){
+            current = Map->chumBucket();
+        }
+        else if(current->title == "at the krusty krab"){
+            current = Map->krustyKrab();
+        }
+        else if(current->title == "at the salty spitoon"){
+            current = Map->saltySpitoon();
+        }
+        else if(current->title == "at sandy's treedome"){
+            current = Map->treedome();
+        }
+        else{
+            cout << "You look lost. Back to the pineapple with you!" << endl;
+            current = Map->findLocation("inside the pineapple");
         }
     }
     return 0;
