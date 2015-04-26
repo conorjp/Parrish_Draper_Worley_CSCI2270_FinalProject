@@ -209,7 +209,7 @@ void HashTable::printNotVisitedLocations(Location *head)
     }
 
 }
-bool allVisited(){
+bool HashTable::allVisited(){
     bool visited = true;
     for(int i=0; i<table.size(); i++){
         if(table[i]->visited == false){
