@@ -41,6 +41,11 @@ class HashTable{
     void addToOrder (std:: string location);
     bool allVisited();
     Location* pineapple();
+    Location* rock();
+    Location* chumBucket();
+    Location* krustyKrab();
+    Location* saltySpitoon();
+    Location* treedome();
   protected:
   private:
     std::vector<Location*> table;

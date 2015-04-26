@@ -243,6 +243,21 @@ Location* HashTable::pineapple(){
     return currentLoc;
 }
 
+Location* HashTable::rock(){
+    
+}
+Location* HashTable::chumBucket(){
+    
+}
+Location* HashTable::krustyKrab(){
+    
+}
+Location* HashTable::saltySpitoon(){
+    
+}
+Location* HashTable::treedome(){
+    
+}
 //making changes
 
 
