@@ -40,11 +40,11 @@ class HashTable{
     void setHealth(std::string name);
     void addToOrder (std:: string location);
     bool allVisited();
-    Location *head;
   protected:
   private:
     std::vector<Location*> table;
     int tableSize = 5;
+    Location *head;
 };
 
 #endif
