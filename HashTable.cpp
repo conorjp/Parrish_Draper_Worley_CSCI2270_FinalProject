@@ -29,7 +29,7 @@ void HashTable::insertLocation(std::string in_title, int lives){
 
     if (possible == NULL)
     {
-        cout<< index << " "<< in_title<<" no collision"<<endl;
+        //cout<< index << " "<< in_title<<" no collision"<<endl;
         table[index] = newLocation;
         newLocation->next = NULL;
     }
@@ -223,21 +223,36 @@ bool HashTable::allVisited(){
 //LOCATION FUNCTIONS
 Location* HashTable::pineapple(){
     Location *currentLoc = findLocation("inside the pineapple");
-    cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
     string name;
-    cin >> name;
-    
-    if (name == "spongebob")
-    {
-        string location;
-        cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at sandy’s treedome'. Which would you like to do?"<<endl;
-        getline(cin,location);
-        cout<<location<<endl;
-        if(location == "under a rock" || location == "at sandy's treedome"){
-            currentLoc = findLocation(location);
+    while(name != "spongebob"){
+        cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
+        cin >> name;
+        if (name == "spongebob")
+        {
+            string location;
+            cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at sandy’s treedome'. Which would you like to do?"<<endl;
+            getline(cin,location);
+            cout<<location<<endl;
+            if(location == "under a rock" || location == "at sandy's treedome"){
+                currentLoc = findLocation(location);
+            }
+            else{
+                cout << "You can't go there. You lose a life." << endl;
+            }
         }
         else{
-            cout << "You can't go there. You lose a life." << endl;
+            currentLoc->lives--;
+            if(currentLoc->lives != 1){
+                cout << "Wrong! " << currentLoc->lives << " lives left. Please try again." << endl;
+            }
+            else if(currentLoc->lives == 0){
+                Location *fail = new Location("fail", 1);
+                currentLoc = fail;
+                return currentLoc;
+            }
+            else{
+                cout << "Wrong! " << currentLoc->lives << " life left. Please try again." << endl;
+            }
         }
     }
     return currentLoc;

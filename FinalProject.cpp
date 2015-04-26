@@ -73,6 +73,9 @@ int main(){
         else if(current->title == "at sandy's treedome"){
             current = Map->treedome();
         }*/
+        else if(current->title == "fail"){
+            cout << "Wrong! No more lives. You lose!" << endl;
+        }
         else{
             cout << "You look lost. Back to the pineapple with you!" << endl;
             current = Map->findLocation("inside the pineapple");
