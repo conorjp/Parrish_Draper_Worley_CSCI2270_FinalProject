@@ -216,8 +216,12 @@ bool HashTable::allVisited(){
     bool visited = true;
     for(int i=0; i<table.size(); i++){
         if(table[i] != NULL){
-            if(table[i]->visited == false){
-                visited = false;
+            Location *x = table[i];
+            while(x != NULL){
+                if(x->visited == false){
+                    visited = false;
+                }
+                x = x->next;
             }
         }
     }
