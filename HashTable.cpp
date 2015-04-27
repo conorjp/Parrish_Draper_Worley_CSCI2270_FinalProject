@@ -8,6 +8,9 @@
 
 #include <iostream>
 #include <vector>
+#include <string>
+#include <fstream>
+#include <sstream>
 #include "HashTable.h"
 
 using namespace std;
@@ -224,16 +227,205 @@ bool HashTable::allVisited(){
 Location* HashTable::pineapple(){
     Location *currentLoc = findLocation("inside the pineapple");
     string name;
+    //cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
+    //getline(cin, name);
     while(name != "spongebob"){
         cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
-        cin >> name;
+        getline(cin, name);
         if (name == "spongebob")
         {
+            
+            cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
             string location;
-            cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at sandy’s treedome'. Which would you like to do?"<<endl;
             getline(cin,location);
-            cout<<location<<endl;
-            if(location == "under a rock" || location == "at sandy's treedome"){
+            //cout<<location<<endl;
+            if(location == "under a rock" || location == "at the treedome"){
+                currentLoc = findLocation(location);
+            }
+            else{
+                cout << "You can't go there. You lose a life." << endl;
+            }
+        }
+        else{
+            currentLoc->lives--;
+            if(currentLoc->lives != 1){
+                cout << "Wrong! " << currentLoc->lives << " lives left. Please try again." << endl;
+            }
+            else if(currentLoc->lives == 0){
+                Location *fail = new Location("fail", 1);
+                currentLoc = fail;
+                return currentLoc;
+            }
+            else{
+                cout << "Wrong! " << currentLoc->lives << " life left. Please try again." << endl;
+            }
+        }
+    }
+    
+    return currentLoc;
+}
+
+Location* HashTable::rock(){
+    Location *currentLoc = findLocation("under a rock");
+    string name;
+    while(name != "starfish"){
+        cout<<"You are under a rock at your best friend Patrick's home. What type of fish is he (all lower case one word, hint: he's not a typical fish!)."<<endl;
+        getline(cin, name);
+        if (name == "starfish")
+        {
+            string location;
+            cout<<"Congratulations! You now have the option to go to work at the krusty krab by typing 'at the krusty krab' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
+            getline(cin,location);
+            //cout<<location<<endl;
+            if(location == "at the krusty krab" || location == "at the treedome"){
+                currentLoc = findLocation(location);
+            }
+            else{
+                cout << "You can't go there. You lose a life." << endl;
+            }
+        }
+        else{
+            currentLoc->lives--;
+            if(currentLoc->lives != 1){
+                cout << "Wrong! " << currentLoc->lives << " lives left. Please try again." << endl;
+            }
+            else if(currentLoc->lives == 0){
+                Location *fail = new Location("fail", 1);
+                currentLoc = fail;
+                return currentLoc;
+            }
+            else{
+                cout << "Wrong! " << currentLoc->lives << " life left. Please try again." << endl;
+            }
+        }
+    }
+    return currentLoc;
+}
+Location* HashTable::treedome(){
+    Location *currentLoc = findLocation("at the treedome");
+    string name;
+    while(name != "squirrel"){
+        cout<<"You are now in a your friend sandy's treedome. What type of animal is sandy(all lower case one word, hint: they love acorns!)."<<endl;
+        getline(cin, name);
+        if (name == "squirrel")
+        {
+            cout<<"Congratulations! You now have the option to go to the salty spitoon by typing 'at the salty spitoon' or visit your friend patrick by typing 'under a rock'. Which would you like to do?"<<endl;
+            string location;
+            getline(cin,location);
+            //cout<<location<<endl;
+            if(location == "at the salty spitoon" || location == "under a rock"){
+                currentLoc = findLocation(location);
+            }
+            else{
+                cout << "You can't go there. You lose a life." << endl;
+            }
+        }
+        else{
+            currentLoc->lives--;
+            if(currentLoc->lives != 1){
+                cout << "Wrong! " << currentLoc->lives << " lives left. Please try again." << endl;
+            }
+            else if(currentLoc->lives == 0){
+                Location *fail = new Location("fail", 1);
+                currentLoc = fail;
+                return currentLoc;
+            }
+            else{
+                cout << "Wrong! " << currentLoc->lives << " life left. Please try again." << endl;
+            }
+        }
+    }
+    return currentLoc;
+}
+Location* HashTable::chumBucket(){
+    Location *currentLoc = findLocation("at the chum bucket");
+    string name;
+    while(name != "computer"){
+        cout<<"You are now at the chum bucket. What is plankton's wife (all lower case one word, hint: she's not a fish)."<<endl;
+        getline(cin, name);
+        if (name == "computer")
+        {
+            
+            cout<<"Congratulations! You now have the option to go to the salty spitoon by typing 'at the salty spitoon' or the krusty krab by typing 'at the krusty krab'. Which would you like to do?"<<endl;
+            string location;
+            getline(cin,location);
+            //cout<<location<<endl;
+            if(location == "at the salty spitoon" || location == "at the krusty krab"){
+                currentLoc = findLocation(location);
+            }
+            else{
+                cout << "You can't go there. You lose a life." << endl;
+            }
+        }
+        else{
+            currentLoc->lives--;
+            if(currentLoc->lives != 1){
+                cout << "Wrong! " << currentLoc->lives << " lives left. Please try again." << endl;
+            }
+            else if(currentLoc->lives == 0){
+                Location *fail = new Location("fail", 1);
+                currentLoc = fail;
+                return currentLoc;
+            }
+            else{
+                cout << "Wrong! " << currentLoc->lives << " life left. Please try again." << endl;
+            }
+        }
+    }
+    
+    return currentLoc;
+}
+Location* HashTable::krustyKrab(){
+    Location *currentLoc = findLocation("at the krusty krab");
+    string name;
+    while(name != "frycook"){
+        cout<<"You are now at the krusty krab. What is your job here (all lower case one word, hint: your neighbor squidward gives you orders from his boat)."<<endl;
+        getline(cin, name);
+        if (name == "frycook")
+        {
+            
+            cout<<"Congratulations! You now have the option to visit your boss mr. krabb's arch nemesis plankton's resturant the chum bucket by typing 'at the chum bucket' or visit your friend patrick by typing 'under a rock'. Which would you like to do?"<<endl;
+            string location;
+            getline(cin,location);
+            //cout<<location<<endl;
+            if(location == "under a rock" || location == "at the chum bucket"){
+                currentLoc = findLocation(location);
+            }
+            else{
+                cout << "You can't go there. You lose a life." << endl;
+            }
+        }
+        else{
+            currentLoc->lives--;
+            if(currentLoc->lives != 1){
+                cout << "Wrong! " << currentLoc->lives << " lives left. Please try again." << endl;
+            }
+            else if(currentLoc->lives == 0){
+                Location *fail = new Location("fail", 1);
+                currentLoc = fail;
+                return currentLoc;
+            }
+            else{
+                cout << "Wrong! " << currentLoc->lives << " life left. Please try again." << endl;
+            }
+        }
+    }
+    
+    return currentLoc;
+}
+Location* HashTable::saltySpitoon(){
+    Location *currentLoc = findLocation("at the salty spitoon");
+    string name;
+    while(name != "tough"){
+        cout<<"You are now at the salty spitoon. What are you required to be to enter (all lower case one word, hint: welcome to the salty spitoon, how ______ are ya?)."<<endl;
+        getline(cin, name);
+        if (name == "tough")
+        {
+            string location;
+            cout<<"Congratulations! You now have the option to visit your boss mr. krabb's arch nemesis plankton's resturant the chum bucket by typing 'at the chum bucket' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
+            getline(cin,location);
+            //cout<<location<<endl;
+            if(location == "at the chum bucket" || location == "at the treedome"){
                 currentLoc = findLocation(location);
             }
             else{
@@ -258,21 +450,6 @@ Location* HashTable::pineapple(){
     return currentLoc;
 }
 
-Location* HashTable::rock(){
-    
-}
-Location* HashTable::chumBucket(){
-    
-}
-Location* HashTable::krustyKrab(){
-    
-}
-Location* HashTable::saltySpitoon(){
-    
-}
-Location* HashTable::treedome(){
-    
-}
 //making changes
 
 

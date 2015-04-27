@@ -54,12 +54,15 @@ int main(){
     Location *current = Map->findLocation("inside the pineapple");
     while(current->lives > 0 && Map->allVisited() == false){
         //Map->addToOrder(current->title);
-        cout << "test" << endl;
+        //cout << "test" << endl;
         if(current->title == "inside the pineapple"){
             current = Map->pineapple();
         }
-        /*else if(current->title == "under a rock"){
+        else if(current->title == "under a rock"){
             current = Map->rock();
+        }
+        else if(current->title == "at the treedome"){
+            current = Map->treedome();
         }
         else if(current->title == "at the chum bucket"){
             current = Map->chumBucket();
@@ -70,9 +73,6 @@ int main(){
         else if(current->title == "at the salty spitoon"){
             current = Map->saltySpitoon();
         }
-        else if(current->title == "at sandy's treedome"){
-            current = Map->treedome();
-        }*/
         else if(current->title == "fail"){
             cout << "Wrong! No more lives. You lose!" << endl;
         }
