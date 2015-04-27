@@ -28,6 +28,7 @@ HashTable::~HashTable(){
 void HashTable::insertLocation(std::string in_title, int lives){
     int index = hashSum(in_title);
     Location *newLocation = new Location(in_title, lives);
+    newLocation->visited = false;
     Location *possible = table[index];
 
     if (possible == NULL)
@@ -226,7 +227,24 @@ bool HashTable::allVisited(){
 //LOCATION FUNCTIONS
 Location* HashTable::pineapple(){
     Location *currentLoc = findLocation("inside the pineapple");
+    currentLoc->visited = true;
     string name;
+    //cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
+        getline(cin, name);
+        if (name == "spongebob")
+        {
+            
+            cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
+            string location;
+            getline(cin,location);
+            //cout<<location<<endl;
+            if(location == "under a rock" || location == "at the treedome"){
+                currentLoc = findLocation(location);
+            }
+            else{
+                cout << "You can't go there. You lose a life." << endl;
+            }
+        }
     //cout<<"You are in a pineapple under the sea. Who are you (all lower case one word without pants)."<<endl;
     //getline(cin, name);
     while(name != "spongebob"){
@@ -267,6 +285,7 @@ Location* HashTable::pineapple(){
 
 Location* HashTable::rock(){
     Location *currentLoc = findLocation("under a rock");
+    currentLoc->visited = true;
     string name;
     while(name != "starfish"){
         cout<<"You are under a rock at your best friend Patrick's home. What type of fish is he (all lower case one word, hint: he's not a typical fish!)."<<endl;
@@ -303,6 +322,7 @@ Location* HashTable::rock(){
 }
 Location* HashTable::treedome(){
     Location *currentLoc = findLocation("at the treedome");
+    currentLoc->visited = true;
     string name;
     while(name != "squirrel"){
         cout<<"You are now in a your friend sandy's treedome. What type of animal is sandy(all lower case one word, hint: they love acorns!)."<<endl;
@@ -339,6 +359,7 @@ Location* HashTable::treedome(){
 }
 Location* HashTable::chumBucket(){
     Location *currentLoc = findLocation("at the chum bucket");
+    currentLoc->visited = true;
     string name;
     while(name != "computer"){
         cout<<"You are now at the chum bucket. What is plankton's wife (all lower case one word, hint: she's not a fish)."<<endl;
@@ -377,6 +398,7 @@ Location* HashTable::chumBucket(){
 }
 Location* HashTable::krustyKrab(){
     Location *currentLoc = findLocation("at the krusty krab");
+    currentLoc->visited = true;
     string name;
     while(name != "frycook"){
         cout<<"You are now at the krusty krab. What is your job here (all lower case one word, hint: your neighbor squidward gives you orders from his boat)."<<endl;
@@ -415,6 +437,7 @@ Location* HashTable::krustyKrab(){
 }
 Location* HashTable::saltySpitoon(){
     Location *currentLoc = findLocation("at the salty spitoon");
+    currentLoc->visited = true;
     string name;
     while(name != "tough"){
         cout<<"You are now at the salty spitoon. What are you required to be to enter (all lower case one word, hint: welcome to the salty spitoon, how ______ are ya?)."<<endl;

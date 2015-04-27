@@ -82,6 +82,14 @@ int main(){
         }
     }
     
-    
+    if(current->lives > 0){
+        cout << "Congratulations you won! You obviously watch a lot of spongebob and we can be friends now." << endl;
+
+    }
+
+    else{
+        cout << "You lose. You need to go watch more spongebob." << endl;
+    }
+
     return 0;
 }
