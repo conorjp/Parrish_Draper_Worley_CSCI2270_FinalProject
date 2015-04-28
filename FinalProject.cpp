@@ -83,12 +83,12 @@ int main(){
     }
     
     if(current->lives > 0){
-        cout << "Congratulations you won! You obviously watch a lot of spongebob and we can be friends now." << endl;
+        cout << "Congratulations " << playerName <<  ", you won! You obviously watch a lot of Spongebob and we can be friends now." << endl;
 
     }
 
     else{
-        cout << "You lose. You need to go watch more spongebob." << endl;
+        cout << "You lose, " << playerName << ". You need to go watch more Spongebob." << endl;
     }
 
     return 0;
