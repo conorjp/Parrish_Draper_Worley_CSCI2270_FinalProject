@@ -15,6 +15,8 @@
 
 using namespace std;
 
+int livesT;
+
 HashTable::HashTable(){
     table = vector<Location*> (tableSize);
     for(int i=0; i<tableSize; i++){
@@ -27,6 +29,7 @@ HashTable::~HashTable(){
 
 void HashTable::insertLocation(std::string in_title, int lives){
     int index = hashSum(in_title);
+    livesT = lives;
     Location *newLocation = new Location(in_title, lives);
     newLocation->visited = false;
     Location *possible = table[index];
@@ -269,7 +272,8 @@ Location* HashTable::pineapple(){
             }
         }
         else{
-            currentLoc->lives--;
+            livesT--;
+            currentLoc->lives = livesT;
             //cout << currentLoc->lives << endl;
             
             if(currentLoc->lives == 0){
@@ -309,7 +313,8 @@ Location* HashTable::rock(){
             }
         }
         else{
-            currentLoc->lives--;
+            livesT--;
+            currentLoc->lives = livesT;
             if(currentLoc->lives == 0){
                 Location *fail = new Location("fail", 1);
                 currentLoc = fail;
@@ -345,7 +350,8 @@ Location* HashTable::treedome(){
             }
         }
         else{
-            currentLoc->lives--;
+            livesT--;
+            currentLoc->lives = livesT;
             if(currentLoc->lives == 0){
                 Location *fail = new Location("fail", 1);
                 currentLoc = fail;
@@ -381,7 +387,8 @@ Location* HashTable::chumBucket(){
             }
         }
         else{
-            currentLoc->lives--;
+            livesT--;
+            currentLoc->lives = livesT;
             if(currentLoc->lives == 0){
                 Location *fail = new Location("fail", 1);
                 currentLoc = fail;
@@ -418,7 +425,8 @@ Location* HashTable::krustyKrab(){
             }
         }
         else{
-            currentLoc->lives--;
+            livesT--;
+            currentLoc->lives = livesT;
             if(currentLoc->lives == 0){
                 Location *fail = new Location("fail", 1);
                 currentLoc = fail;
@@ -455,7 +463,8 @@ Location* HashTable::saltySpitoon(){
             }
         }
         else{
-            currentLoc->lives--;
+            livesT--;
+            currentLoc->lives = livesT;
             if(currentLoc->lives == 0){
                 Location *fail = new Location("fail", 1);
                 currentLoc = fail;
