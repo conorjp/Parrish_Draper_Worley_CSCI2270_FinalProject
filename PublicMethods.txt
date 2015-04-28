@@ -1,0 +1,61 @@
+Public Methods Documentation File
+
+void insertLocation(std::string in_title, int year);
+
+
+Location* findLocation(std::string in_title);
+
+//prototype:
+//  table.findLocation("location")
+//Description:
+//  This function takes in the location at which the player would like to be. It goes through our
+//  hashtable to find the location and give the player the options associated with that location.
+//Pre-Conditions:
+//  requires a string as an input
+//  you must have built an instance of our hash table and filled it with locations before deleting a location
+
+void deleteLocation(std::string in_title);
+
+//prototype:
+//  map.deleteLocation("string")
+// Description:
+//  This function deletes a "location" from our hash table. Each of our locations are
+//  to determine at what point in our rpg game the player is in.
+//Pre-Conditions
+//  requires a string as an input
+//  you must have built an instance of our hash table and filled it with locations before deleting a location
+
+void printMap();
+
+
+void printPreviousLocations(Location *head);
+
+//The player must have left the first level for there to be anything to print.
+//Everytime the player visits a new location we must assign that new location to the end of our visited linked list.
+
+void printNotVisitedLocations(Location *head);
+
+
+int hashSum(std::string x);
+
+
+void setHealth(std::string name);
+
+// always decrements lives so that the players current life doesnt need to be known (makes it a little easier) if we want to be able to
+// give the player health back we can pass an integer when that integer is greater than zero you add to health and if its less than zero you
+// decrement the health
+
+void addToOrder (std:: string location);
+
+//adds the current location to the end of the linked list
+
+bool allVisited();
+
+//Checks if every location has been visited. If all have been visited and lives != 0, player wins
+
+Location* pineapple();
+Location* rock();
+Location* chumBucket();
+Location* krustyKrab();
+Location* saltySpitoon();
+Location* treedome();
