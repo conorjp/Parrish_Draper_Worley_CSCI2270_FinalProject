@@ -75,13 +75,13 @@ int main(){
         }
         else if(current->title == "fail"){
             cout << "Wrong! No more lives. You lose!" << endl;
+            current->lives = 0;
         }
         else{
             cout << "You look lost. Back to the pineapple with you!" << endl;
             current = Map->findLocation("inside the pineapple");
         }
     }
-    
     if(current->lives > 0){
         cout << "Congratulations " << playerName <<  ", you won! You obviously watch a lot of Spongebob and we can be friends now." << endl;
 
