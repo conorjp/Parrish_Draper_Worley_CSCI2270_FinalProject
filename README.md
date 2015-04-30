@@ -5,13 +5,13 @@ Conor Parrish, James Draper, Luke Worley -- Final Project ReadMe
 A text-based RPG in the world of Spongebob. The class will be a location class, holding different locations in a hash table. Your character will navigate through these locations, completing challenges at each one.
 
 ***How to Run:***
-check back after phase 2
+Download the zip file and decompress it. Using a terminal window or your favorite IDE compiler options, compile the driver file (FinalProject.cpp) and the HashTable.cpp file together using C++11 g++ procedure. Making sure that locations.txt and HashTable.h remain in the same directory, run the executable.
 
 ***Dependencies:***
-check back after phase 2
+There are very few dependencies for this program. Simply compile and run.
 
 ***System Requirements:***
-If you can type in a command line, you can run this game.
+If you can type in a unix-based command line and compile with c++11, you can run this game.
 
 ***Group Members:***
 Conor Parrish, James Draper, Luke Worley
@@ -20,4 +20,4 @@ Conor Parrish, James Draper, Luke Worley
 check back after people contribute
 
 ***Open issues/bugs:***
-check back after phase 2
+No known issues, would love feedback on any we aren't seeing!
