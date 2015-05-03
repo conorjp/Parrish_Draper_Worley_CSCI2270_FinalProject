@@ -17,7 +17,7 @@ If you can type in a unix-based command line and compile with c++11, you can run
 Conor Parrish, James Draper, Luke Worley
 
 ***Contributors:***
-check back after people contribute
+Candeladd -- Fixed an issue where th egame wouldn't tell you that you won until you reached the next location.
 
 ***Open issues/bugs:***
 No known issues, would love feedback on any we aren't seeing!
