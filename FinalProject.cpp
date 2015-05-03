@@ -49,7 +49,7 @@ int main(){
         }
     }
     in.close();
-    
+
     //GAMEPLAY
     Location *current = Map->findLocation("inside the pineapple");
     while(current->lives > 0 && Map->allVisited() == false){

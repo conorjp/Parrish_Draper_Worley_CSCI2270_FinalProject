@@ -93,6 +93,7 @@ Location* HashTable::findLocation(std::string in_title){
     else{
         return NULL;
     }
+
 }
 //prototype:
 //  map.deleteLocation("string")
@@ -240,7 +241,7 @@ Location* HashTable::pineapple(){
         getline(cin, name);
         if (name == "spongebob")
         {
-            
+
             cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
             string location;
             getline(cin,location);
@@ -259,7 +260,7 @@ Location* HashTable::pineapple(){
         getline(cin, name);
         if (name == "spongebob")
         {
-            
+
             cout<<"Congratulations! You now have the option to visit your friend patrick by typing 'under a rock' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
             string location;
             getline(cin,location);
@@ -275,7 +276,7 @@ Location* HashTable::pineapple(){
             livesT--;
             currentLoc->lives = livesT;
             //cout << currentLoc->lives << endl;
-            
+
             if(currentLoc->lives == 0){
                 Location *fail = new Location("fail", 1);
                 currentLoc = fail;
@@ -287,7 +288,7 @@ Location* HashTable::pineapple(){
             }
         }
     }
-    
+
     return currentLoc;
 }
 
@@ -295,13 +296,18 @@ Location* HashTable::rock(){
     Location *currentLoc = findLocation("under a rock");
     //currentLoc->visited = true;
     string name;
-    while(name != "starfish"){
+    while(name != "starfish"&&currentLoc->visited==false){
         cout<<"You are under a rock at your best friend Patrick's home. What type of fish is he (all lower case one word, hint: he's not a typical fish!)."<<endl;
         getline(cin, name);
         if (name == "starfish")
         {
             currentLoc->visited = true;
-            string location;
+            if (allVisited() == true)
+            {
+                break;
+            }
+
+          string location;
             cout<<"Congratulations! You now have the option to go to work at the krusty krab by typing 'at the krusty krab' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
             getline(cin,location);
             //cout<<location<<endl;
@@ -332,12 +338,16 @@ Location* HashTable::treedome(){
     Location *currentLoc = findLocation("at the treedome");
     //currentLoc->visited = true;
     string name;
-    while(name != "squirrel"){
+    while(name != "squirrel"&&currentLoc->visited==false){
         cout<<"You are now in your friend sandy's treedome. What type of animal is sandy(all lower case one word, hint: they love acorns!)."<<endl;
         getline(cin, name);
         if (name == "squirrel")
         {
             currentLoc->visited = true;
+            if (allVisited() == true)
+            {
+                break;
+            }
             cout<<"Congratulations! You now have the option to go to the salty spitoon by typing 'at the salty spitoon' or visit your friend patrick by typing 'under a rock'. Which would you like to do?"<<endl;
             string location;
             getline(cin,location);
@@ -369,12 +379,16 @@ Location* HashTable::chumBucket(){
     Location *currentLoc = findLocation("at the chum bucket");
     //currentLoc->visited = true;
     string name;
-    while(name != "computer"){
+    while(name != "computer"&&currentLoc->visited==false){
         cout<<"You are now at the chum bucket. What is plankton's wife (all lower case one word, hint: she's not a fish)."<<endl;
         getline(cin, name);
         if (name == "computer")
         {
             currentLoc->visited = true;
+            if (allVisited() == true)
+            {
+                break;
+            }
             cout<<"Congratulations! You now have the option to go to the salty spitoon by typing 'at the salty spitoon' or the krusty krab by typing 'at the krusty krab'. Which would you like to do?"<<endl;
             string location;
             getline(cin,location);
@@ -400,19 +414,24 @@ Location* HashTable::chumBucket(){
             }
         }
     }
-    
+
     return currentLoc;
 }
 Location* HashTable::krustyKrab(){
     Location *currentLoc = findLocation("at the krusty krab");
     //currentLoc->visited = true;
     string name;
-    while(name != "frycook"){
+    while(name != "frycook"&&currentLoc->visited==false){
         cout<<"You are now at the krusty krab. What is your job here (all lower case one word, hint: your neighbor squidward gives you orders from his boat)."<<endl;
         getline(cin, name);
         if (name == "frycook")
+
         {
             currentLoc->visited = true;
+            if (allVisited() == true)
+            {
+                break;
+            }
             cout<<"Congratulations! You now have the option to visit your boss mr. krabb's arch nemesis plankton's resturant the chum bucket by typing 'at the chum bucket' or visit your friend patrick by typing 'under a rock'. Which would you like to do?"<<endl;
             string location;
             getline(cin,location);
@@ -438,19 +457,24 @@ Location* HashTable::krustyKrab(){
             }
         }
     }
-    
+
     return currentLoc;
 }
 Location* HashTable::saltySpitoon(){
     Location *currentLoc = findLocation("at the salty spitoon");
     //currentLoc->visited = true;
     string name;
-    while(name != "tough"){
+    while(name != "tough"&&currentLoc->visited==false){
         cout<<"You are now at the salty spitoon. What are you required to be to enter (all lower case one word, hint: welcome to the salty spitoon, how ______ are ya?)."<<endl;
         getline(cin, name);
         if (name == "tough")
         {
+
             currentLoc->visited = true;
+            if (allVisited() == true)
+            {
+                break;
+            }
             string location;
             cout<<"Congratulations! You now have the option to visit your boss mr. krabb's arch nemesis plankton's resturant the chum bucket by typing 'at the chum bucket' or sandy in a tree bubble by typing 'at the treedome'. Which would you like to do?"<<endl;
             getline(cin,location);
